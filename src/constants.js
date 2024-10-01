@@ -1,0 +1,1 @@
+export const ERROR_OPERATION_FAILED_TEXT = 'FS operation failed';
