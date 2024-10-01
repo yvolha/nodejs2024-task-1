@@ -14,7 +14,8 @@ const create = async () => {
         filePath, 
         textInsideFile, 
         { flag: 'wx' }, 
-        (err) => throwErrorWithText(err, ERROR_OPERATION_FAILED_TEXT));
+        (err) => throwErrorWithText(err, ERROR_OPERATION_FAILED_TEXT),
+    );
 };
 
 await create();
