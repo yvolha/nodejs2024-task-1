@@ -10,6 +10,6 @@ export function resolveDir (dirname, metaUrl) {
 
 export function throwErrorWithText (error, errorText) {
     if (error) {
-        throw new Error(errorText)
-    }
+        throw new Error(errorText);
+    };
 }
