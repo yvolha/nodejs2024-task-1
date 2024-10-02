@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'path';
+
 import { resolveDir, throwErrorWithText } from '../helpers.js';
 import { ERROR_OPERATION_FAILED_TEXT } from '../constants.js';
 

@@ -1,6 +1,7 @@
+import fs from 'node:fs';
+
 import { ERROR_OPERATION_FAILED_TEXT } from "../constants.js";
 import { resolveDir, throwErrorWithText } from "../helpers.js";
-import fs from 'node:fs';
 
 const copy = async () => {
     const dirPath = resolveDir('files', import.meta.url);
