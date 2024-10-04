@@ -7,14 +7,16 @@ const parseArgs = () => {
             return prev;
         } else {
             if (index % 2 === 0) {
-                return prev.push(next.substring(2) + ' is ');
+                prev.push(next.substring(2) + ' is ');
+                return prev;
             } else {
-                return prev.push(next);
+                prev.push(next);
+                return prev;
             }
         }
     }, []);
 
-    console.log(cliArgs.slice(0, cliArgs.length - 2));
+    console.log(cliArgs.join(', '));
 };
 
 parseArgs();
