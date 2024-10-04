@@ -1,22 +1,15 @@
 const parseArgs = () => {
     const argIndex = 2;
+    const dashesIndex = 2;
 
-    const cliArgs = process.argv.reduce((prev, next, index) => {
+    const cliArgsInitial = process.argv;
+    const cliArgsFinal = [];
 
-        if (index < argIndex) {
-            return prev;
-        } else {
-            if (index % 2 === 0) {
-                prev.push(next.substring(2) + ' is ');
-                return prev;
-            } else {
-                prev.push(next);
-                return prev;
-            }
-        }
-    }, []);
+    for (let i = argIndex; i < cliArgsInitial.length; i++) {
+        cliArgsFinal.push(`${cliArgsInitial[i].slice(dashesIndex)} is ${cliArgsInitial[++i]}`);
+    }
 
-    console.log(cliArgs.join(', '));
+    console.log(cliArgsFinal.join(', '));
 };
 
 parseArgs();
