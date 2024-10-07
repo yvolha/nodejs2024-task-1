@@ -4,7 +4,7 @@ const transform = async () => {
     process.stdout.write('Please start typing and I\'ll reverse the words for you on Enter.\n\n');
 
     const reverseCharsTransform = new Transform({
-        transform(chunk, encodong, callback) {
+        transform(chunk, encoding, callback) {
             callback(null, String(chunk).trim().split('').reverse().join('')+'\n');
         }
     })
