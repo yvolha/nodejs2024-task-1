@@ -1,6 +1,14 @@
+import { fork } from 'child_process';
+import { join} from 'path';
+
+import { resolveDir } from '../helpers.js';
+
+const dirPath = resolveDir('files', import.meta.url);
+const filePath = join(dirPath, 'script.js');
+
 const spawnChildProcess = async (args) => {
-    // Write your code here
+    fork(filePath, args, { stdio: ['inherit', 'inherit', 'inherit', 'ipc']});
 };
 
 // Put your arguments in function call to test this functionality
-spawnChildProcess( /* [someArgument1, someArgument2, ...] */);
+spawnChildProcess( ['greenArg1', 'yellowArg2', 'redArg3']);
