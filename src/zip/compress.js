@@ -21,10 +21,9 @@ const compress = async () => {
 
     pipeline(source, gzip, destination, (err) => {
         if (err) {
-            throwErrorWithText(ERROR_COMPRESSION);
+            throwErrorWithText(ERROR_COMPRESSION, err);
         }
     });
-
 };
 
 await compress();

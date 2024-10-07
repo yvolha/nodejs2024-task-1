@@ -1,5 +1,5 @@
 import path from 'path';
-import { createGzip } from 'node:zlib'
+import { createGunzip } from 'node:zlib'
 import {
     createReadStream,
     createWriteStream,
@@ -7,21 +7,21 @@ import {
 import { pipeline } from 'node:stream';
 
 import { resolveDir, throwErrorWithText } from "../helpers.js";
-import { ERROR_COMPRESSION } from '../constants.js';
+import { ERROR_DECOMPRESSION } from '../constants.js';
 
 const decompress = async () => {
     const dirPath = resolveDir('files', import.meta.url);
     const fileToDecompressPath = path.join(dirPath, 'archive.gz');
     const fileDecompressedPath = path.join(dirPath, 'fileToCompress.txt');
 
-    const source = createReadStream(fileToCompressPath);
-    const destination = createWriteStream(fileCompressedPath);
+    const source = createReadStream(fileToDecompressPath);
+    const destination = createWriteStream(fileDecompressedPath);
 
-    const gzip = createGzip();
+    const gunzip = createGunzip();
 
-    pipeline(source, gzip, destination, (err) => {
+    pipeline(source, gunzip, destination, (err) => {
         if (err) {
-            throwErrorWithText(ERROR_COMPRESSION);
+            throwErrorWithText(ERROR_DECOMPRESSION, err);
         }
     });
 };
